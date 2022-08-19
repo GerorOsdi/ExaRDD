@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:ExaRDD.ViewModel"
+             x:Class="ExaRDD.View.VRecord">
+
+    <ContentPage.BindingContext>
+        <local:VMRecordatrio/>
+    </ContentPage.BindingContext>
+    
+        <StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="1"  Grid.Row="0" Text="Fecha de recordatorio"/>
+            <DatePicker Grid.Column="1"   Grid.Row="1" x:Name="dpFecha" Date="{Binding selectFecha}" MinimumDate="{Binding nowFecha}"></DatePicker>
+            <ImageButton x:Name="imgDesc" Grid.RowSpan="2" Grid.Column="2" BackgroundColor="Brown" Command="{Binding setImageCommand}"
+                   HorizontalOptions="Center" WidthRequest="80" Source="{Binding Image}"/>
+        </Grid>
+        <Editor x:Name="txtDescripcion" BackgroundColor="Beige" WidthRequest="230" HeightRequest="500"
+                Text="{Binding Descripcion}"></Editor>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnSave" HorizontalOptions="Center" Text="Agregar"
+                    Grid.Column="1" Command="{Binding SaveCommand}"/>
+            <Button x:Name="btnLimpiar" HorizontalOptions="Center" Text="Limpiar"
+                    Grid.Column="2" Command="{Binding CleanCommand}"/>
+            <Button x:Name="btnDelete" HorizontalOptions="Center" Text="Elimnar"
+                    Grid.Column="3"/>
+
+            <ImageButton Source="microfono.jpg" Grid.Row="2" Grid.Column="1" Command="{Binding SetGrabar}" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"/>
+            <ImageButton Source="play.png" Grid.Row="2" Grid.Column="2" Command="{Binding SetGrabar}" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"/>
+            <Button x:Name="btnLista" HorizontalOptions="Center" Text="Lista" Grid.Row="2"
+                    Grid.Column="3" Clicked="btnLista_Clicked"/>
+        </Grid>    
+    </StackLayout>
+
+        
+
+</ContentPage>
